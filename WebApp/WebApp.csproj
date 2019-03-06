@@ -187,6 +187,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AuthFilter.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -653,8 +655,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Uploads\News\Images\390e8f08-28c5-48a5-a00d-d409f985a3cc.png" />
-    <Content Include="Uploads\News\Images\cc54f7d6-88a5-40b2-a2c9-4aed958514ce.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -699,7 +699,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Uploads\Event\Images\" />
+    <Folder Include="Uploads\News\Images\" />
     <Folder Include="Uploads\Resource\Images\" />
+    <Folder Include="Views\Error\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

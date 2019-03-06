@@ -32,6 +32,7 @@ namespace WebApp.Models
         public string Author { get; set; }
 
         [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd}")]
         public DateTime? PublishDate { get; set; }
 
         [StringLength(1000)]
@@ -40,6 +41,8 @@ namespace WebApp.Models
         [StringLength(1000)]
         [DataType(DataType.Url)]
         public string URL { get; set; }
+
+        public bool HideOnSite { get; set; }
 
         public DateTime? CreatedDate { get; set; }
 

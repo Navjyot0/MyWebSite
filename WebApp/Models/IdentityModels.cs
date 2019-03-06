@@ -33,7 +33,7 @@ namespace WebApp.Models
             using (var store = new UserStore<ApplicationUser>(context))
             {
                 var manager = new UserManager<ApplicationUser>(store);
-                var user = new ApplicationUser { UserName = "founder", Email = "navjyot@nathanark.com", PasswordHash = "Navjyot@123", LockoutEnabled = true };
+                var user = new ApplicationUser { UserName = "navjyot@nathanark.com", Email = "navjyot@nathanark.com", PasswordHash = "Navjyot@123", LockoutEnabled = true };
 
                 manager.Create(user, "ChangeItAsap!");
                 manager.AddToRole(user.Id, "AppAdmin");

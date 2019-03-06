@@ -133,7 +133,7 @@ namespace WebApp.Controllers
         // POST: News/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "AppAdmin")]
+        [AuthFilter(Roles = "AppAdmin")]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             News news = await db.News.FindAsync(id);
