@@ -18,16 +18,50 @@ namespace WebApp.Models
         }
     }
 
+    public class SchoolDBInitializer : DropCreateDatabaseAlways<ApplicationDbContext>
+    {
+        protected override void Seed(ApplicationDbContext context)
+        {
+            using (var store = new RoleStore<IdentityRole>(context))
+            {
+                var manager = new RoleManager<IdentityRole>(store);
+                var role = new IdentityRole { Name = "AppAdmin" };
+
+                manager.Create(role);
+            }
+
+            using (var store = new UserStore<ApplicationUser>(context))
+            {
+                var manager = new UserManager<ApplicationUser>(store);
+                var user = new ApplicationUser { UserName = "founder", Email = "navjyot@nathanark.com", PasswordHash = "Navjyot@123", LockoutEnabled = true };
+
+                manager.Create(user, "ChangeItAsap!");
+                manager.AddToRole(user.Id, "AppAdmin");
+            }
+
+            base.Seed(context);
+        }
+    }
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            Database.SetInitializer<ApplicationDbContext>(new SchoolDBInitializer());
         }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+
+        public virtual DbSet<Address> Addresses { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
+        public virtual DbSet<ContentDetail> ContentDetails { get; set; }
+        public virtual DbSet<Event> Events { get; set; }
+        public virtual DbSet<Hospital> Hospitals { get; set; }
+        public virtual DbSet<News> News { get; set; }
+        public virtual DbSet<Resource> Resources { get; set; }
     }
 }
