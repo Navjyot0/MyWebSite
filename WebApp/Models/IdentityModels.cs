@@ -18,7 +18,7 @@ namespace WebApp.Models
         }
     }
 
-    public class SchoolDBInitializer : CreateDatabaseIfNotExists<ApplicationDbContext>
+    public class WebAppDBInitializer : CreateDatabaseIfNotExists<ApplicationDbContext>
     {
         protected override void Seed(ApplicationDbContext context)
         {
@@ -48,7 +48,7 @@ namespace WebApp.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
-            Database.SetInitializer<ApplicationDbContext>(new SchoolDBInitializer());
+            Database.SetInitializer<ApplicationDbContext>(new WebAppDBInitializer());
         }
 
         public static ApplicationDbContext Create()
