@@ -111,7 +111,7 @@ namespace WebApp.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.ContentID = new SelectList(db.ContentDetails, "ContentID", "Title", news.ContentID);
+            //ViewBag.ContentID = new SelectList(db.ContentDetails, "ContentID", "Title", news.ContentID);
             return View(news);
         }
 

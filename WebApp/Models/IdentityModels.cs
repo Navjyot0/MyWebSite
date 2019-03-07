@@ -18,7 +18,7 @@ namespace WebApp.Models
         }
     }
 
-    public class SchoolDBInitializer : DropCreateDatabaseAlways<ApplicationDbContext>
+    public class SchoolDBInitializer : CreateDatabaseIfNotExists<ApplicationDbContext>
     {
         protected override void Seed(ApplicationDbContext context)
         {

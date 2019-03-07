@@ -10,25 +10,36 @@
 <h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>News</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ContentDetail.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ContentDetail.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NewsDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NewsDate)
-        </dd>
-
-    </dl>
+    <table class="table">
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.ContentDetail.Title)</td>
+            <td>@Html.DisplayFor(model => model.ContentDetail.Title)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.ContentDetail.Description)</td>
+            <td>@Html.DisplayFor(model => model.ContentDetail.Description)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.ContentDetail.Author)</td>
+            <td>@Html.DisplayFor(model => model.ContentDetail.Author)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.ContentDetail.Keywords)</td>
+            <td>@Html.DisplayFor(model => model.ContentDetail.Keywords)</td>
+        </tr>
+        <tr>
+            <td>Banner Image</td>
+            <td><img src="~/@Url.Content(Model.ContentDetail.Image)" alt="Image" /></td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.ContentDetail.PublishDate)</td>
+            <td>@Html.DisplayFor(model => model.ContentDetail.PublishDate)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.NewsDate)</td>
+            <td>@Html.DisplayFor(model => model.NewsDate)</td>
+        </tr>
+    </table>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()

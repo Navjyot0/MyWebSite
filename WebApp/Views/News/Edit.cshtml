@@ -7,6 +7,7 @@
 
 <h2>Edit</h2>
 
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -49,7 +50,8 @@
     </div>
 
     <div class="form-group">
-        <img src="@Url.Content(Model.ContentDetail.URL)" alt="Image" />
+        @Html.DisplayFor(model=>model.ContentDetail.URL)
+        @*<img src="@Url.Content(Model.ContentDetail.URL)" alt="Image" />*@
     </div>
 
     <div class="form-group">
