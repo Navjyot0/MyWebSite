@@ -11,7 +11,7 @@ namespace WebApp.Models
         public int NewsID { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime? NewsDate { get; set; }
 
         public int? ContentID { get; set; }

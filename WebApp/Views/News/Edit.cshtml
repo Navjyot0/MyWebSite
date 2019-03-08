@@ -7,84 +7,96 @@
 
 <h2>Edit</h2>
 
-
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4>News</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.NewsID)
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.ContentDetail.Title, "Title", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ContentDetail.Title, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ContentDetail.Title, "", new { @class = "text-danger" })
+    <div class="form-horizontal">
+        <h4>News</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.NewsID)
+        @Html.HiddenFor(model => model.ContentID)
+        @Html.HiddenFor(model => model.ContentDetail.ContentID)
+        @Html.HiddenFor(model => model.ContentDetail.Image)
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContentDetail.Title, "Title", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ContentDetail.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ContentDetail.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContentDetail.Description, "Description", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.ContentDetail.Description, new { @class = "form-control col-md-12", @rows = 5 })
+                @Html.ValidationMessageFor(model => model.ContentDetail.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContentDetail.Author, "Author", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ContentDetail.Author, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ContentDetail.Author, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContentDetail.Keywords, "Keywords", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ContentDetail.Keywords, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ContentDetail.Keywords, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContentDetail.Upload, "Banner Image", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ContentDetail.Upload, new { type = "file" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContentDetail.Image, "Current Banner Image", htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                <td><img src="~/@Html.DisplayFor(model=>model.ContentDetail.Image)" alt="Image" class="col-md-8" /></td>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContentDetail.PublishDate, "Publish Date", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ContentDetail.PublishDate, new { htmlAttributes = new { @class = "form-control date-inputmask" } })
+                @Html.ValidationMessageFor(model => model.ContentDetail.PublishDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NewsDate, "News Date", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NewsDate, new { htmlAttributes = new { @class = "form-control date-inputmask" } })
+                @Html.ValidationMessageFor(model => model.NewsDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.CheckBoxFor(model => model.ContentDetail.HideOnSite)
+                @Html.LabelFor(model => model.ContentDetail.HideOnSite, "Hide On Site", htmlAttributes: new { @class = "control-label col-md-2" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
         </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ContentDetail.Description, "Description", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextAreaFor(model => model.ContentDetail.Description, new { @class = "form-control col-md-12", @rows = 5 })
-            @Html.ValidationMessageFor(model => model.ContentDetail.Description, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ContentDetail.Author, "Author", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ContentDetail.Author, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ContentDetail.Author, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ContentDetail.Upload, "Banner Image", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(model => model.ContentDetail.Upload, new { type = "file" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.DisplayFor(model=>model.ContentDetail.URL)
-        @*<img src="@Url.Content(Model.ContentDetail.URL)" alt="Image" />*@
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ContentDetail.PublishDate, "Publish Date", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ContentDetail.PublishDate, new { htmlAttributes = new { @class = "form-control date-inputmask" } })
-            @Html.ValidationMessageFor(model => model.ContentDetail.PublishDate, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.NewsDate, "News Date", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.NewsDate, new { htmlAttributes = new { @class = "form-control date-inputmask" } })
-            @Html.ValidationMessageFor(model => model.NewsDate, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-10">
-            @Html.CheckBoxFor(model => model.ContentDetail.HideOnSite)
-            @Html.LabelFor(model => model.ContentDetail.HideOnSite, "Hide On Site", htmlAttributes: new { @class = "control-label col-md-2" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
-        </div>
-    </div>
-</div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index") |
+    @Html.ActionLink("Back", "Details", new { id = Model.NewsID })
 </div>

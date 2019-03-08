@@ -9,7 +9,6 @@ namespace WebApp.Models
     [Table("Contact")]
     public partial class Contact
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Contact()
         {
             Addresses = new HashSet<Address>();
@@ -23,7 +22,6 @@ namespace WebApp.Models
         [StringLength(20)]
         public string Phone { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Address> Addresses { get; set; }
     }
 }

@@ -28,7 +28,8 @@
         </tr>
         <tr>
             <td>Banner Image</td>
-            <td><img src="~/@Url.Content(Model.ContentDetail.Image)" alt="Image" /></td>
+            @*<td><img src="~/@Url.Content(Model.ContentDetail.Image)" alt="Image" /></td>*@
+            <td><img src="~/@Html.DisplayFor(model=>model.ContentDetail.Image)" class="col-md-8" alt="Image" /></td>
         </tr>
         <tr>
             <td>@Html.DisplayNameFor(model => model.ContentDetail.PublishDate)</td>
