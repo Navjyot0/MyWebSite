@@ -9,7 +9,7 @@
 
 <div>
     <h4>News</h4>
-    <table class="table">
+    <table class="table col-md-12">
         <tr>
             <td>@Html.DisplayNameFor(model => model.ContentDetail.Title)</td>
             <td>@Html.DisplayFor(model => model.ContentDetail.Title)</td>
@@ -17,6 +17,10 @@
         <tr>
             <td>@Html.DisplayNameFor(model => model.ContentDetail.Description)</td>
             <td>@Html.DisplayFor(model => model.ContentDetail.Description)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.ContentDetail.URL)</td>
+            <td>@Html.DisplayFor(model => model.ContentDetail.URL, new { @target="_blank" })</td>
         </tr>
         <tr>
             <td>@Html.DisplayNameFor(model => model.ContentDetail.Author)</td>

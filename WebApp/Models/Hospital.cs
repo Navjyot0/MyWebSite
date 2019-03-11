@@ -17,6 +17,7 @@ namespace WebApp.Models
         public string Description { get; set; }
 
         [StringLength(1000)]
+        [DataType(DataType.Url)]
         public string WebsiteURL { get; set; }
 
         [StringLength(1000)]

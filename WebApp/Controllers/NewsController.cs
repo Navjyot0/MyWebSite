@@ -107,7 +107,7 @@ namespace WebApp.Controllers
                 db.Entry(news).State = EntityState.Modified;
                 db.Entry(news.ContentDetail).State = EntityState.Modified;
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details/" + news.NewsID);
             }
             return View(news);
         }
